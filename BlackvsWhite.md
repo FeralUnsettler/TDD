@@ -61,6 +61,89 @@ Imagine que você esteja testando a função de cálculo de desconto de um siste
 
 Ambos os testes de **Caixa Preta** e **Caixa Branca** são essenciais para garantir a qualidade do software, abordando diferentes aspectos do sistema. O teste de caixa preta garante que o software atenda aos requisitos funcionais e se comporte corretamente do ponto de vista do usuário final, enquanto o teste de caixa branca garante que a lógica interna e a implementação estejam corretas e eficientes. Juntos, eles oferecem uma abordagem abrangente para o teste de software, cobrindo tanto a funcionalidade externa quanto a estrutura interna do sistema.
 
+---
+
+Vamos usar alguns exemplos em Python para ilustrar as diferenças entre **Teste de Caixa Preta** e **Teste de Caixa Branca**. Esses exemplos demonstrarão como cada abordagem pode ser usada para testar um software, focando na funcionalidade (caixa preta) e na implementação interna (caixa branca).
+
+### **Exemplo de Teste de Caixa Preta**
+
+Suponha que temos uma função chamada `soma` que recebe dois números e retorna sua soma. O objetivo do teste de caixa preta é verificar se a função se comporta corretamente para uma variedade de entradas, sem saber como a função é implementada.
+
+#### **Código da Função:**
+
+```python
+def soma(a, b):
+    return a + b
+```
+
+#### **Teste de Caixa Preta:**
+
+Neste teste, não precisamos saber como a função `soma` é implementada, apenas nos concentramos em garantir que ela funcione conforme o esperado para diferentes entradas.
+
+```python
+def test_soma():
+    assert soma(2, 3) == 5           # Teste com números positivos
+    assert soma(-1, 1) == 0          # Teste com número negativo e positivo
+    assert soma(0, 0) == 0           # Teste com zeros
+    assert soma(1.5, 2.5) == 4.0     # Teste com números decimais
+
+test_soma()
+```
+
+### **Exemplo de Teste de Caixa Branca**
+
+Agora, suponha que temos uma função chamada `calcular_desconto` que aplica um desconto a um preço com base em um percentual fornecido. Queremos garantir que todos os caminhos possíveis dentro da função sejam testados. Para isso, precisamos conhecer a implementação interna da função.
+
+#### **Código da Função:**
+
+```python
+def calcular_desconto(preco, desconto):
+    if desconto < 0 or desconto > 100:
+        raise ValueError("Desconto deve estar entre 0 e 100.")
+    return preco * (1 - desconto / 100)
+```
+
+#### **Teste de Caixa Branca:**
+
+Neste teste, exploramos todos os caminhos possíveis na função `calcular_desconto` para garantir a cobertura total do código.
+
+```python
+def test_calcular_desconto():
+    # Teste para um desconto válido
+    assert calcular_desconto(100, 10) == 90.0
+    
+    # Teste para o limite inferior do desconto
+    assert calcular_desconto(100, 0) == 100.0
+
+    # Teste para o limite superior do desconto
+    assert calcular_desconto(100, 100) == 0.0
+
+    # Teste para desconto negativo (caminho que levanta exceção)
+    try:
+        calcular_desconto(100, -10)
+    except ValueError as e:
+        assert str(e) == "Desconto deve estar entre 0 e 100."
+    
+    # Teste para desconto maior que 100 (caminho que levanta exceção)
+    try:
+        calcular_desconto(100, 150)
+    except ValueError as e:
+        assert str(e) == "Desconto deve estar entre 0 e 100."
+
+test_calcular_desconto()
+```
+
+### **Comparação dos Exemplos**
+
+- **Teste de Caixa Preta:** O teste da função `soma` verifica apenas a saída da função para diferentes entradas, sem considerar sua implementação interna. Ele garante que a função funcione corretamente para entradas válidas e cobre uma variedade de cenários de uso comum.
+  
+- **Teste de Caixa Branca:** O teste da função `calcular_desconto` verifica todos os caminhos possíveis dentro da função, incluindo entradas válidas, entradas nos limites, e entradas que devem causar exceções. Esse teste garante que todos os caminhos do código sejam cobertos e que a função se comporte corretamente em todos os casos.
+
+### **Conclusão**
+
+Os testes de **Caixa Preta** se concentram em validar o comportamento externo de uma função ou módulo, enquanto os testes de **Caixa Branca** se concentram em verificar a implementação interna. Ambos os tipos de teste são importantes para garantir que o software funcione conforme o esperado, tanto em termos de requisitos funcionais quanto em termos de implementação correta e eficiente.
+
+
 ### **Referências**
 
 - Myers, G. J., Sandler, C., & Badgett, T. (2011). *The Art of Software Testing*. John Wiley & Sons.

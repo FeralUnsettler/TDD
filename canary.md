@@ -92,4 +92,34 @@ O **Canary Deployment** é uma abordagem eficaz para a implantação gradual de 
 ---
 
 
-O termo "Canary Deployment" é derivado do conceito de "canários na mina de carvão". Este termo remonta ao século XIX, quando mineradores usavam canários vivos para detectar a presença de gases tóxicos, como o monóxido de carbono, nas minas de carvão.
+O termo **"Canary Deployment"** é derivado do conceito de **"canários na mina de carvão"**. Este termo remonta ao século XIX, quando mineradores usavam canários vivos para detectar a presença de gases tóxicos, como o monóxido de carbono, nas minas de carvão. 
+
+### **Origem do Termo "Canary Deployment"**
+
+1. **Contexto Histórico:**
+   - **Canários na Mina:** Os mineradores levavam canários com eles para dentro das minas porque os pássaros são mais sensíveis a gases tóxicos do que os humanos. Se o canário mostrasse sinais de estresse ou morresse, isso indicava a presença de gases perigosos, e os mineradores sabiam que era hora de evacuar a mina.
+
+2. **Paralelo no Desenvolvimento de Software:**
+   - **Desdobramento do Conceito:** O conceito de "Canary Deployment" foi inspirado por esse método de detecção precoce de problemas. Em vez de usar canários, o método moderno utiliza uma versão do software para verificar se o novo código está livre de problemas graves antes que ele seja lançado para todos os usuários.
+
+3. **Aplicação em Software:**
+   - **Implantação Gradual:** Em um canary deployment, uma nova versão do software é lançada para um pequeno subconjunto de usuários ou servidores primeiro. Isso permite detectar problemas potenciais antes de fazer a liberação completa, assim como os mineradores usavam canários para detectar problemas de segurança na mina.
+
+### **Benefícios do Conceito**
+
+- **Detecção Precoce de Problemas:** Assim como os canários ajudavam a detectar gases perigosos antes que afetassem os mineradores, o canary deployment ajuda a identificar problemas com o novo software antes que ele afete todos os usuários.
+- **Minimização de Risco:** Permite que equipes de desenvolvimento minimizem o impacto de falhas e problemas, evitando a implantação de mudanças que poderiam causar grandes interrupções no serviço.
+
+### **Exemplo Prático**
+
+Imagine que você tem uma aplicação web e está prestes a lançar uma nova versão com uma funcionalidade importante. Em vez de liberar a atualização para todos os usuários de uma vez, você faz o seguinte:
+
+1. **Implantação Inicial:** Você implanta a nova versão em um pequeno número de servidores ou a um grupo seleto de usuários.
+2. **Monitoramento:** Observa o desempenho, coleta feedback e verifica se há problemas críticos.
+3. **Escalonamento Gradual:** Se a nova versão se comportar bem, aumenta gradualmente a porcentagem de tráfego que a utiliza, até que eventualmente todos os usuários estejam na nova versão.
+
+Se problemas forem identificados, você pode reverter a implantação sem afetar a maioria dos usuários, assim como a presença de canários ajudava a evitar riscos para os mineradores.
+
+### **Conclusão**
+
+O **Canary Deployment** é uma abordagem estratégica para a implantação de software que utiliza a ideia de detecção precoce e mitigação de riscos, inspirada na prática histórica de usar canários para garantir a segurança dos mineradores. Esse método permite uma introdução gradual de mudanças, ajudando a identificar e resolver problemas de forma controlada antes que afetem a totalidade dos usuários.
